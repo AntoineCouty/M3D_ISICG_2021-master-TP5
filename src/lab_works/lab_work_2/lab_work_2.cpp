@@ -31,27 +31,20 @@ namespace M3D_ISICG
 		luminosite = 1.0;
 		_time = 0;
 		nb_triangle = 64;
-		
 
-		
 		std::vector<Vec2f> vertices = circle( nb_triangle );
 
-		
-		
 		//création vao et vbo
 		
-
 		initVbao(vertices);
 
 		//compilation des shaders
 		std::string vertexShaderStr   = readFile( _shaderFolder + "lw2.vert" );
 		std::string fragmentShaderStr = readFile( _shaderFolder + "lw2.frag" );
 
-		
 		GLuint	vertex	 = glCreateShader( GL_VERTEX_SHADER );
 		GLuint fragment = glCreateShader( GL_FRAGMENT_SHADER );
 
-		
 
 		const GLchar * vSrc = vertexShaderStr.c_str();
 		const GLchar * fSrc = fragmentShaderStr.c_str();
@@ -179,6 +172,7 @@ namespace M3D_ISICG
 		glBindVertexArray( vao );
 		glDrawElements( GL_TRIANGLES, nb_triangle * 3, GL_UNSIGNED_INT, 0 );
 		glBindVertexArray( 0 );
+		glClearColor( _bgColor.x, _bgColor.y, _bgColor.z, _bgColor.w );
 	}
 
 	void LabWork2::handleEvents( const SDL_Event & p_event ) {}

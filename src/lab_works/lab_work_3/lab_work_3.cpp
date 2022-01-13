@@ -62,6 +62,7 @@ namespace M3D_ISICG
 		glBindVertexArray( _cube2._vao );
 		glDrawElements( GL_TRIANGLES, _cube2._indices.size(), GL_UNSIGNED_INT, 0 );
 		glBindVertexArray( 0 );
+		glClearColor( _bgColor.x, _bgColor.y, _bgColor.z, _bgColor.w );
 
 	}
 
@@ -236,6 +237,7 @@ namespace M3D_ISICG
 	void LabWork3::_initCamera()
 	{
 		_camera.setScreenSize( _windowWidth, _windowHeight );
+		_camera.setPosition( Vec3f(0.0, 0.0, 4.0) );
 	}
 
 	void LabWork3::_initBuffers()

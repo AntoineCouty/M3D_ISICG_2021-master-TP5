@@ -127,6 +127,7 @@ namespace M3D_ISICG
 		glBindVertexArray( vao );
 		glDrawArrays( GL_TRIANGLES, 0, 3 );
 		glBindVertexArray( 0 );
+		glClearColor( _bgColor.x, _bgColor.y, _bgColor.z, _bgColor.w );
 	}
 
 	void LabWork1::handleEvents( const SDL_Event & p_event ) {}
