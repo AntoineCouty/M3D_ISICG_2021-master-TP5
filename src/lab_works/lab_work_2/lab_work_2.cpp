@@ -101,6 +101,7 @@ namespace M3D_ISICG
 		glProgramUniform1f( program, locLum, luminosite );
 
 		glUseProgram( program );
+		_translation = true;
 
 		std::cout << "Done!" << std::endl;
 		return true;
@@ -161,7 +162,10 @@ namespace M3D_ISICG
 		
 
 	void LabWork2::animate( const float p_deltaTime ) { 
-		_time += p_deltaTime;
+		if ( _translation )
+		{
+			_time += p_deltaTime;
+		}
 		glProgramUniform1f( program, locTrans, glm::sin( _time ) );
 	}
 
@@ -189,7 +193,7 @@ namespace M3D_ISICG
 			glClearColor( _bgColor.x, _bgColor.y, _bgColor.z, _bgColor.w );
 		}
 
-		
+		ImGui::Checkbox( "translateX", &_translation );
 
 		if ( ImGui::SliderInt( "nb_triangle", &nb_triangle, 3.0, 128.0 ) ) {
 			std::vector<Vec2f> vertices = circle( nb_triangle );

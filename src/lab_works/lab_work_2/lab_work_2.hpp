@@ -25,6 +25,7 @@ namespace M3D_ISICG
 		int				  nb_triangle;
 		float  luminosite;
 		float  _time;
+		bool   _translation;
 		std::vector<int> indice;
 		std::vector<Vec3f>color;
 
