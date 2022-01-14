@@ -18,7 +18,7 @@ namespace M3D_ISICG
 
 	bool LabWork5::init()
 	{
-		std::cout << "Initializing lab work 4..." << std::endl;
+		std::cout << "Initializing lab work 5..." << std::endl;
 		// Set the color used by glClear to clear the color buffer (in render()).
 		glClearColor( _bgColor.x, _bgColor.y, _bgColor.z, _bgColor.w );
 
