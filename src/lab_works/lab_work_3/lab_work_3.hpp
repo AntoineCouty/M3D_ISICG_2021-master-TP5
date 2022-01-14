@@ -59,6 +59,13 @@ namespace M3D_ISICG
 
 
 		void resize( const int p_width, const int p_height ) override;
+		float _cubex;
+		float _cubey;
+		float _cubez;
+		float _axex;
+		float _axey;
+		float _axez;
+		int	  _axes;
 
 	  private:
 		bool _initProgram();

@@ -25,7 +25,7 @@ namespace M3D_ISICG
 		void displayUI() override;
 
 		void resize( const int p_width, const int p_height ) override;
-
+		int	 _valueDisplay = 0;
 	  private:
 		bool _initProgram();
 		void _initCamera();

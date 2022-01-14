@@ -16,6 +16,10 @@ void main()
 {
 	vec3 n = normalize(normal);
 	vec3 w0 = normalize(rayon);
+	if(dot(n, w0) > 0){
+		n = -n;
+	}
+
 
 	float Ia = 1.f;
 	vec3 Ca = uAmbient ;

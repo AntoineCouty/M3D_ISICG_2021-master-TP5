@@ -115,6 +115,29 @@ namespace M3D_ISICG
 		}
 		if ( ImGui::SliderFloat( "Speed", &_cameraSpeed, 0.1f, 10.f, "%01.1f" ) ) {}
 
+		if ( ImGui::RadioButton( "conference", _valueDisplay == 0 ) )
+		{
+			if ( _valueDisplay != 0 )
+			{
+				_bunny.cleanGL();
+				_camera.setPosition( Vec3f( 0.f, 2.f, 0.2 ) );
+				_bunny.load("_bunny", "D:\\M1__ISICG_S1\\Moteur3D\\M3D_ISICG_2021-master-TP4\\conference.obj" );
+				_bunny._transformation = glm::scale( _bunny._transformation, Vec3f( 0.003 ) );
+				_valueDisplay		   = 0;
+			}
+		}
+		if ( ImGui::RadioButton( "bunny", _valueDisplay == 1 ) )
+		{
+			if ( _valueDisplay != 1 )
+			{
+				_bunny.cleanGL();
+				_camera.setPosition( Vec3f( 0.f, 0.f, 0.5 ) );
+				_bunny.load( "_bunny", "D:\\M1__ISICG_S1\\Moteur3D\\M3D_ISICG_2021-master-TP4\\bunny.obj");
+				_bunny._transformation = glm::scale( _bunny._transformation, Vec3f( 300 ) );
+				_valueDisplay		   = 1;
+			}
+		}
+
 		ImGui::End();
 	}
 

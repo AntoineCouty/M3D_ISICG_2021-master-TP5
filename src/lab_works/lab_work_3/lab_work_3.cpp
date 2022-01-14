@@ -25,8 +25,14 @@ namespace M3D_ISICG
 		_cube2 = _createCube();
 		_initCamera();
 		_initBuffers();
-
-		_cube2._transformation = glm::translate( _cube2._transformation, Vec3f( 2.5,0.0,0.0) );
+		_cubex				   = 2.5;
+		_cubey				   = 0.0;
+		_cubez				   = 0.0;
+		_axex				   = 1.0;
+		_axey				   = 0.0;
+		_axez				   = 0.0;
+		_axes				   = 0.0;
+		_cube2._transformation = glm::translate( _cube2._transformation, Vec3f( _cubex, _cubey, _cubez ) );
 
 		glUseProgram( _program );
 		
@@ -39,10 +45,10 @@ namespace M3D_ISICG
 
 	void LabWork3::animate( const float p_deltaTime )
 	{
-		
+		_cube2._transformation = glm::translate( _cube2._transformation, Vec3f( -_cubex, -_cubey, -_cubez ) );
 		_cube._transformation = glm::rotate( _cube._transformation, p_deltaTime , Vec3f( 0.0, 1.0, 1.0 ) );
-		_cube2._transformation = glm::rotate( _cube2._transformation, p_deltaTime, Vec3f( 0.0, 1.0, 1.0 ) );
-
+		_cube2._transformation = glm::rotate( _cube2._transformation, p_deltaTime, Vec3f( _axex, _axey, _axez ) );
+		_cube2._transformation = glm::translate( _cube2._transformation, Vec3f( _cubex, _cubey, _cubez ) );
 	}
 
 	void LabWork3::render()
@@ -129,6 +135,45 @@ namespace M3D_ISICG
 		{
 			_camera.setFovy( _fovy );
 			_updateProjectionMatrix();
+		}
+
+		if ( ImGui::RadioButton( "Axe_X", _axes == 0 ) )
+		{
+			if ( _axes != 0 ) {
+				_cubex = 2.5;
+				_cubey = 0.0;
+				_cubez = 0.0;
+				_axex  = 1.0;
+				_axey  = 0.0;
+				_axez  = 0.0;
+				_axes = 0;
+			}
+		}
+		if ( ImGui::RadioButton( "Axe_Y", _axes == 1 ) )
+		{
+			if ( _axes != 1 )
+			{
+				_cubex = 0.0;
+				_cubey = 2.5;
+				_cubez = 0.0;
+				_axex  = 0.0;
+				_axey  = 1.0;
+				_axez  = 0.0;
+				_axes = 1;
+			}
+		}
+		if ( ImGui::RadioButton( "Axe_Z", _axes == 2 ) )
+		{
+			if ( _axes != 2 )
+			{
+				_cubex = 0.0;
+				_cubey = 0.0;
+				_cubez = 2.5;
+				_axex  = 0.0;
+				_axey  = 0.0;
+				_axez  = 1.0;
+				_axes = 2;
+			}
 		}
 
 		ImGui::End();
